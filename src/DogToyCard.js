@@ -16,18 +16,26 @@ import React from "react";
 const useStyles = makeStyles((theme) => ({
 	root: {
 		backgroundColor: brown[100],
+		alignItems: "stretch",
+		height: "100%",
 	},
-	header: {
-		margin: "1rem",
-		height: "4rem",
-		alignItems: "end",
-		paddingTop: 0,
+	mainContent: {
+		marginBottom: 0,
+		paddingBottom: 0,
+	},
+	title: {
+		display: "block",
+		textOverflow: "ellipsis",
+		wordWrap: "break-word",
+		overflow: "hidden",
+		minHeight: "3.6em",
+		maxHeight: "3.6em",
+		lineHeight: "1.8em",
 	},
 	price: {
-		marginLeft: "1rem",
-		padding: "1rem",
 		fontWeight: "bold",
 		color: brown[800],
+		fontSize: "2rem",
 	},
 	media: {
 		height: 0,
@@ -35,10 +43,17 @@ const useStyles = makeStyles((theme) => ({
 		backgroundPosition: "top",
 	},
 	description: {
-		// textOverflow: "ellipsis",
-		// maxHeight: "6rem",
-		whiteSpace: "break-spaces",
+		marginTop: "1em",
+		display: "block",
+		textOverflow: "ellipsis",
+		wordWrap: "break-word",
 		overflow: "hidden",
+		maxHeight: "3.6em",
+		lineHeight: "1.8em",
+	},
+	actions: {
+		marginTop: 0,
+		paddingTop: 0,
 	},
 	button: {
 		marginBottom: 0,
@@ -48,38 +63,40 @@ const useStyles = makeStyles((theme) => ({
 export default function DogToyCard(props) {
 	const { title, price, description, imageUrl } = props;
 	const classes = useStyles();
-	// const maxDescriptionLengthInWords = 15;
+	const maxDescriptionLengthInWords = 10;
 
-	// const condensePhrase = (phrase, maxWords) => {
-	// 	const smallerPhrase = phrase
-	// 		.split(" ")
-	// 		.slice(0, maxWords + 1)
-	// 		.join(" ")
-	// 		.concat("...");
+	const condensePhrase = (phrase, maxWords) => {
+		const smallerPhrase = phrase
+			.split(" ")
+			.slice(0, maxWords + 1)
+			.join(" ")
+			.concat("...");
 
-	// 	return smallerPhrase;
-	// };
+		return smallerPhrase;
+	};
 
 	return (
 		<Card className={classes.root}>
-			<CardActionArea>
-				<CardHeader title={title} className={classes.header} />
-				<Typography className={classes.price}>{price}</Typography>
+			<CardActionArea className={classes.mainContent}>
 				<CardMedia
 					className={classes.media}
 					image={imageUrl}
 					title={title}
 					alt={title}
 				/>
-
 				<CardContent>
+					<Typography variant="h5" className={classes.title}>
+						{title}
+					</Typography>
+					<Typography className={classes.price}>${price}</Typography>
+					<Divider />
 					<Typography variant="subtitle1" className={classes.description}>
-						{/* {condensePhrase(description, maxDescriptionLengthInWords)} */}
-						{description}
+						{condensePhrase(description, maxDescriptionLengthInWords)}
+						{/* {description} */}
 					</Typography>
 				</CardContent>
 			</CardActionArea>
-			<CardActions>
+			<CardActions className={classes.actions}>
 				<Button className={classes.button}>Add To Cart</Button>
 				<Button className={classes.button}>Buy Now</Button>
 				<Button className={classes.button}>Learn More</Button>
