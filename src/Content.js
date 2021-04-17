@@ -6,11 +6,11 @@ import { v4 as uuidv4 } from "uuid";
 
 export default function Content() {
 	return (
-		<Grid container spacing={4}>
-			{data.map((toy) => {
+		<Grid container spacing={2}>
+			{data.map((toyObj) => {
 				return (
 					<Grid item xs={12} sm={6} md={4}>
-						<DogToyCard toy={toy} key={uuidv4()} />
+						<DogToyCard {...toyObj} key={uuidv4()} />
 					</Grid>
 				);
 			})}
