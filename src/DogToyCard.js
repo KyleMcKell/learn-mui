@@ -7,6 +7,7 @@ import {
 	Button,
 	CardActions,
 	CardActionArea,
+	Divider,
 } from "@material-ui/core";
 import { brown } from "@material-ui/core/colors";
 import { makeStyles } from "@material-ui/styles";
@@ -14,19 +15,30 @@ import React from "react";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		height: "100%",
 		backgroundColor: brown[100],
 	},
 	header: {
 		margin: "1rem",
 		height: "4rem",
-		alignItems: "stretch",
+		alignItems: "end",
 		paddingTop: 0,
+	},
+	price: {
+		marginLeft: "1rem",
+		padding: "1rem",
+		fontWeight: "bold",
+		color: brown[800],
 	},
 	media: {
 		height: 0,
 		paddingTop: "56.25%",
 		backgroundPosition: "top",
+	},
+	description: {
+		// textOverflow: "ellipsis",
+		// maxHeight: "6rem",
+		whiteSpace: "break-spaces",
+		overflow: "hidden",
 	},
 	button: {
 		marginBottom: 0,
@@ -36,35 +48,34 @@ const useStyles = makeStyles((theme) => ({
 export default function DogToyCard(props) {
 	const { title, price, description, imageUrl } = props;
 	const classes = useStyles();
-	const maxDescriptionLengthInWords = 15;
+	// const maxDescriptionLengthInWords = 15;
 
-	const condensePhrase = (phrase, maxWords) => {
-		const smallerPhrase = phrase
-			.split(" ")
-			.slice(0, maxWords + 1)
-			.join(" ")
-			.concat("...");
+	// const condensePhrase = (phrase, maxWords) => {
+	// 	const smallerPhrase = phrase
+	// 		.split(" ")
+	// 		.slice(0, maxWords + 1)
+	// 		.join(" ")
+	// 		.concat("...");
 
-		return smallerPhrase;
-	};
+	// 	return smallerPhrase;
+	// };
 
 	return (
 		<Card className={classes.root}>
 			<CardActionArea>
-				<CardHeader
-					title={title}
-					subheader={price}
-					className={classes.header}
-				/>
+				<CardHeader title={title} className={classes.header} />
+				<Typography className={classes.price}>{price}</Typography>
 				<CardMedia
 					className={classes.media}
 					image={imageUrl}
 					title={title}
 					alt={title}
 				/>
+
 				<CardContent>
-					<Typography variant="subtitle1">
-						{condensePhrase(description, maxDescriptionLengthInWords)}
+					<Typography variant="subtitle1" className={classes.description}>
+						{/* {condensePhrase(description, maxDescriptionLengthInWords)} */}
+						{description}
 					</Typography>
 				</CardContent>
 			</CardActionArea>
