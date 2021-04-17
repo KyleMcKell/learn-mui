@@ -20,6 +20,8 @@ const useStyles = makeStyles((theme) => ({
 	header: {
 		margin: "1rem",
 		height: "4rem",
+		alignItems: "stretch",
+		paddingTop: 0,
 	},
 	media: {
 		height: 0,
@@ -34,6 +36,17 @@ const useStyles = makeStyles((theme) => ({
 export default function DogToyCard(props) {
 	const { title, price, description, imageUrl } = props;
 	const classes = useStyles();
+	const maxDescriptionLengthInWords = 15;
+
+	const condensePhrase = (phrase, maxWords) => {
+		const smallerPhrase = phrase
+			.split(" ")
+			.slice(0, maxWords + 1)
+			.join(" ")
+			.concat("...");
+
+		return smallerPhrase;
+	};
 
 	return (
 		<Card className={classes.root}>
@@ -50,7 +63,9 @@ export default function DogToyCard(props) {
 					alt={title}
 				/>
 				<CardContent>
-					<Typography variant="subtitle1">{description}</Typography>
+					<Typography variant="subtitle1">
+						{condensePhrase(description, maxDescriptionLengthInWords)}
+					</Typography>
 				</CardContent>
 			</CardActionArea>
 			<CardActions>

@@ -7,6 +7,7 @@ import { brown } from "@material-ui/core/colors";
 const useStyles = makeStyles((theme) => ({
 	root: {
 		backgroundColor: brown[50],
+		minHeight: "100vh",
 	},
 }));
 
