@@ -4,18 +4,30 @@ import {
 	CardHeader,
 	CardMedia,
 	Typography,
+	Button,
+	CardActions,
+	CardActionArea,
 } from "@material-ui/core";
+import { brown } from "@material-ui/core/colors";
 import { makeStyles } from "@material-ui/styles";
 import React from "react";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		height: "100%",
+		backgroundColor: brown[100],
+	},
+	header: {
+		margin: "1rem",
+		height: "4rem",
 	},
 	media: {
 		height: 0,
 		paddingTop: "56.25%",
 		backgroundPosition: "top",
+	},
+	button: {
+		marginBottom: 0,
 	},
 }));
 
@@ -25,16 +37,27 @@ export default function DogToyCard(props) {
 
 	return (
 		<Card className={classes.root}>
-			<CardHeader title={title} subheader={price} />
-			<CardMedia
-				className={classes.media}
-				image={imageUrl}
-				title={title}
-				alt={title}
-			/>
-			<CardContent>
-				<Typography>{description}</Typography>
-			</CardContent>
+			<CardActionArea>
+				<CardHeader
+					title={title}
+					subheader={price}
+					className={classes.header}
+				/>
+				<CardMedia
+					className={classes.media}
+					image={imageUrl}
+					title={title}
+					alt={title}
+				/>
+				<CardContent>
+					<Typography variant="subtitle1">{description}</Typography>
+				</CardContent>
+			</CardActionArea>
+			<CardActions>
+				<Button className={classes.button}>Add To Cart</Button>
+				<Button className={classes.button}>Buy Now</Button>
+				<Button className={classes.button}>Learn More</Button>
+			</CardActions>
 		</Card>
 	);
 }
