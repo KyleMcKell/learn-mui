@@ -1,7 +1,6 @@
 import {
 	Card,
 	CardContent,
-	CardHeader,
 	CardMedia,
 	Typography,
 	Button,
@@ -18,10 +17,6 @@ const useStyles = makeStyles((theme) => ({
 		backgroundColor: brown[100],
 		alignItems: "stretch",
 		height: "100%",
-	},
-	mainContent: {
-		marginBottom: 0,
-		paddingBottom: 0,
 	},
 	title: {
 		display: "block",
@@ -77,7 +72,7 @@ export default function DogToyCard(props) {
 
 	return (
 		<Card className={classes.root}>
-			<CardActionArea className={classes.mainContent}>
+			<CardActionArea>
 				<CardMedia
 					className={classes.media}
 					image={imageUrl}
