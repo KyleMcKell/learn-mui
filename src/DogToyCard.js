@@ -26,10 +26,12 @@ const useStyles = makeStyles((theme) => ({
 		minHeight: "3.6em",
 		maxHeight: "3.6em",
 		lineHeight: "1.8em",
+		fontWeight: 500,
+		color: brown[900],
 	},
 	price: {
 		fontWeight: "bold",
-		color: brown[800],
+		color: brown[600],
 		fontSize: "2rem",
 	},
 	media: {
@@ -45,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
 		overflow: "hidden",
 		maxHeight: "3.6em",
 		lineHeight: "1.8em",
+		color: brown[900],
 	},
 	actions: {
 		marginTop: 0,
@@ -52,6 +55,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	button: {
 		marginBottom: 0,
+		color: brown[900],
 	},
 }));
 
